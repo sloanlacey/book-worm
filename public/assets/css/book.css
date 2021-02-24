@@ -1,0 +1,61 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.jumbotron {
+    background-color: #91D9BF;
+    opacity: .85;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+h2 {
+    padding-top: 5px;
+}
+
+.navbar-brand {
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+}
+
+.ready,
+.devoured,
+.new,
+.burgerPic {
+    background-color: #ffffff;
+    opacity: .97;
+    margin: auto;
+}
+
+.chomp-btn {
+    background-color: #8C0D24;
+    font-weight: bold;
+    color: #F2D377;
+    border: 3px solid #F2D377;
+}
+
+.form-control {
+    border: 1px solid #545454;
+}
+
+.orderUp {
+    background-color: #0A6ABF;
+    color: #F2D377;
+    border: 3px solid #F2D377;
+    font-weight: bold;
+}
+
+.burgerPic img {
+    width: 95%;
+    height: auto;
+    margin: auto;
+}
+
+#burgOfDay,
+#devoured {
+    text-align: center;
+    font-weight: bold;
+}
