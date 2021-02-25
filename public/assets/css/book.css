@@ -3,10 +3,67 @@
     color: black;
 }
 
-.jumbotron {
-    background-color: #91D9BF;
-    opacity: .85;
-    height: 50px;
+#header {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #BF2A2A;
+    opacity: .95;
+    font-size: 40px;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 25px;
+}
+
+#search-books {
+    padding: 1rem;
+    background-color: #D96B43;
+    border-radius: 25px;
+    opacity: 0.95;
+}
+
+#search-text {
+    text-align: center; 
+    margin-bottom: 15px;
+    /* font-weight: bold; */
+    color: #222222;
+}
+
+#shelves-card {
+    padding: 1rem;
+    background-color: #D9C666;
+    border-radius: 25px;
+}
+
+#finished-books {
+    padding: 1rem;
+    background-color: #D9C666;
+    border-radius: 25px;
+}
+
+#reading-tracker {
+    background-image: url('/assets/images/blank-chart.jpg');
+    padding: 1rem;
+    border-radius: 25px; 
+    color: #222222;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #D96B43;
+}
+
+.tracker-btn {
+    background-color: #D96B43;
+    color: #222222;
+    border: .5px solid #9e4d2f;
+}
+
+.container-md {
+    padding: 1rem;
+    color: #fff;
+}
+
+.title-text {
+    font-size: 25px;
     justify-content: center;
     text-align: center;
 }
@@ -15,47 +72,20 @@ h2 {
     padding-top: 5px;
 }
 
-.navbar-brand {
-    width: 100%;
-    text-align: center;
-    font-size: 50px;
-}
-
 .ready,
-.devoured,
-.new,
-.burgerPic {
+.new {
     background-color: #ffffff;
     opacity: .97;
     margin: auto;
 }
 
-.chomp-btn {
-    background-color: #8C0D24;
-    font-weight: bold;
-    color: #F2D377;
-    border: 3px solid #F2D377;
+.status-btn {
+    background-color: #91D9BF;
+    color: #222222;
+    border: .5px solid #679c88;
 }
 
 .form-control {
     border: 1px solid #545454;
-}
-
-.orderUp {
-    background-color: #0A6ABF;
-    color: #F2D377;
-    border: 3px solid #F2D377;
-    font-weight: bold;
-}
-
-.burgerPic img {
-    width: 95%;
-    height: auto;
-    margin: auto;
-}
-
-#burgOfDay,
-#devoured {
-    text-align: center;
-    font-weight: bold;
+    margin-bottom: 15px;
 }
