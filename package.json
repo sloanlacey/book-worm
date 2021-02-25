@@ -1,7 +1,7 @@
 {
   "name": "book-worm",
   "version": "1.0.0",
-  "description": "Group project using Express, MySQL and DB access.",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
