@@ -1,74 +1,156 @@
-{{!-- Nav bar/jumbotron --}}
-<div class='jumbotron'>
-    <div class='row'>
-        <h3 style="margin-top: 10px; color: #8C3027;">Book Worm.</h3>
+{{!-- start main container --}}
+<div class="container-md">
+{{!-- Title/header --}}
+<div class="row">
+        <div id="header" class="col-xs-4">B O O K - W O R M</div>
+</div>
+{{!-- Search area -- google api? --}}
+{{!-- Start row 2 --}}
+    <div class="row">
+        <div id="search-books" class="col-xs-4" style="margin-bottom: 25px;">
+            <h4 id="search-text">Add a new book to read:</h4>
+
+                <form class='newBookForm'>
+                    <div class='form-group row mx-auto' style='justify-content: center; text-align: center;'>
+                        <div class='col-sm-6' style="text-align: center;">
+                            <input type='text' class='form-control' id='newBookName' style="text-align: center;" placeholder="Search for a book by title, author or genre">
+                        </div>
+                    </div>
+
+                                <div class='form-group row mx-auto' style='justify-content: center; text-align: center;'>
+                                    <div class='col-sm-10'>
+                                        <button type='submit' class='status-btn btn'>Search</button>
+                                    </div>
+                                </div>
+                </form>
+
+        </div>
+    {{!-- end row 2 --}}
     </div>
+
+{{!-- Start row 3 --}}
+<div class="row" style="margin-bottom: 25px;">
+    <div id="shelves-card" class="col-lg-6 col-md-6 col-sm-8">
+        <div class="card mb-3">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="/assets/images/new-book.jpg" alt="An open book">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5 class="card-title">Looking for something new to read?</h5>
+            <p class="card-text">Browse the shelves of our library to discover something new among thousands of titles.</p>
+            <button type="button" class="status-btn btn">Browse</button>
+        </div>
+        </div>
+        </div> 
+        </div>
+    </div>
+{{!-- Spacing column --}}
+<div class="col-1"></div>
+{{!-- Finished books --}}
+    <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
+        <h1 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px;">Reading Tracker</span></h1><br>
+        <h3><span style="background-color: #91D9BF; padding: 10px;">How much are you reading?</span></h3>
+        <button type="button" class="tracker-btn btn" style="margin-top: 20px;">Browse</button>
+    </div>
+{{!-- End row 3 --}}
 </div>
 
-<div class='container-lg'>
-    <br>
-    <div class='container mx-auto burgersContainer'>
-        <div class='row mx-auto'>
-            <div class='col-md-4 border border-dark border-3 mx-auto ready mt-0'>
-                <h2 id='burgOfDay'>Books I want to read:</h2>
-                <div class='container'>
-                    <ul>
-                        {{#each books}}
-                            {{#unless have_read}}
-                                <li>
-                                    {{book_name}}
-                                    <button type='button' class='chomp-btn change-status btn btn-sm' data-id='{{id}}'>Mark as 'read'</button>
-                                </li>
-                                <br>
-                            {{/unless}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
-            <div class='col-md-4 border border-dark border-3 mx-auto devoured mt-0'>
-                <h2 id='devoured'>Books I have read:</h2>
-                <div class='container'>
-                    <ul>
-                        {{#each books}}
-                            {{#if have_read}}
-                                <li>
-                                    {{book_name}}
-                                </li>
-                                <br>
-                            {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </div>
+
+{{!-- Start row 4 --}}
+<div class="row">
+    <div id="shelves-card" class="col-lg-5 col-md-5 col-sm-8">
+        {{!-- bookshelves --}}
+        <div class="card">
+            <img src="/assets/images/bookshelves.jpg" class="card-img-top" alt="Image of bookshelves" title="Bookshelves">
+            <div class="card-body">
+            <h5 class="card-title">Bookshelves</h5>
+            <p class="card-text">View your personalized bookshelves</p>
+{{!-- Bookshelves modal --}}
+<!-- trigger modal -->
+<button type="button" class="status-btn btn" data-bs-toggle="modal" data-bs-target="#shelvesModal">View</button>
+<!-- Modal -->
+    <div class="modal fade" id="shelvesModal" tabindex="-1" aria-labelledby="shelvesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="shelvesModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+      <div class="modal-body">
+            <ul>
+                {{#each books}}
+                    {{#unless have_read}}
+                        <li>
+                            {{book_name}}
+                            <button type='button' class='status-btn change-status btn btn-sm' data-id='{{id}}'>'read'</button>
+                        </li>
+                        <br>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+{{!-- Spacing column --}}
+<div class="col-lg-2 col-md-2 col-sm-0"></div>
+{{!-- Finished books --}}
+    <div id="finished-books" class="col-lg-5 col-md-5 col-sm-8">
+            <div class="card">
+                <img src="/assets/images/the-end.jpg" class="card-img-top" alt="The last page of a book" title="The End">
+                <div class="card-body">
+                <h5 class="card-title">Finished Books</h5>
+                <p class="card-text">View all finished books</p>
+{{!-- finished books modal --}}
+<!-- trigger finished books modal -->
+<button type="button" class="status-btn btn" data-bs-toggle="modal" data-bs-target="#finishedModal">View</button>
+
+<!-- Finished books modal -->
+    <div class="modal fade" id="finishedModal" tabindex="-1" aria-labelledby="shelvesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="shelvesModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+        <div class="modal-body">
+            <ul>
+                {{#each books}}
+                    {{#if have_read}}
+                        <li>
+                            {{book_name}}
+                            <button type='button' class='status-btn delete-book btn btn-sm' data-id='{{id}}'>Delete</button>
+                        </li>
+                        <br>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+
+    </div>
+    </div>
+    </div>
         </div>
     </div>
-    
-    <br>
-    <br>
-    
-    <div class='col-md-10 border border-dark border-3 new'>
-        <div class='row mx-auto' style='justify-content: center; text-align: center;'>
-            <h2 style='font-weight: bold;'>Add a new book to read:</h2>
-        </div>
-        <br>
-        <form class='newBurgerForm'>
-            <div class='form-group row mx-auto' style='justify-content: center; text-align: center;'>
-                <div class='col-sm-2'>
-                    <label for='newBurgerName' class='col-form-label'>New Book:</label>
-                </div>
-                <div class='col-sm-6'>
-                    <input type='text' class='form-control' id='newBurgerName' placeholder="Search for a book.">
-                </div>
-            </div>
-            <br>
-            <div class='form-group row mx-auto' style='justify-content: center; text-align: center;'>
-                <div class='col-sm-10'>
-                    <button type='submit' class='orderUp btn'>Search</button>
-                </div>
-            </div>
-            <br>
-        </form>
-    </div>
-    <br>
-    <br>
+</div>
+{{!-- End row 4 --}}
+</div>
+
+
+
+
+{{!-- End main container --}}
 </div>
