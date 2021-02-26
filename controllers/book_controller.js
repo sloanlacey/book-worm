@@ -55,4 +55,34 @@ router.put('/api/books/:id', (req, res) => {
     )
 });
 
+// open library
+//author
+router.get('/a/:author', (req, res) => {
+    
+    axios.get(`http://openlibrary.org/search.json?author=${req.params.author}`)
+    .then(openLib => {
+            res.json(openLib.data);
+    }) 
+    .catch(console.error);
+});
+
+//title
+router.get('/a/:title', (req, res) => {
+    
+    axios.get(`http://openlibrary.org/search.json?title=${req.params.title}`)
+    .then(openLib => {
+            res.json(openLib.data);
+    }) 
+    .catch(console.error);
+});
+
+//subject
+router.get('/a/:subject', (req, res) => {
+    axios.get(`https://openlibrary.org/subjects/${req.params.subject}`)
+    .then(openLib => {
+            res.json(openLib.data);
+    }) 
+    .catch(console.error);
+});
+
 module.exports = router;
