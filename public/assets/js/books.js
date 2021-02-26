@@ -21,7 +21,7 @@ $(function() {
 
   $('.newBookForm').on('submit', function(event) {
     event.preventDefault();
-    const term = $('#searchBookName').val();
+    const term = $('#newBookName').val();
     fetch(`/search/${term}`)
       .then(res => res.json())
       .then(json => {
