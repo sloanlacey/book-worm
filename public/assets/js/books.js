@@ -18,25 +18,18 @@ $(function() {
         )
     })
 
-    $('.newBurgerForm').on('submit', function(event) {
+    $('.newBookForm').on('submit', function(event) {
         event.preventDefault();
-
-        $('.burgersContainer').show();
-
-        const newBook = {
-            book_name: $('#newBurgerName').val().trim(),
-            have_read: 0
-        }
-
-        console.log(newBook);
-
-        $.ajax('/api/books/', {
-            type: 'POST',
-            data: newBook
-        }).then(
-            function() {
-                location.reload();
+        const term = $("#searchBookName").val();
+        fetch(`/search/${term}`)
+        .then(res => res.json())
+        .then(json => {
+            let html = "<ol>";
+            for (let book of json.items) {
+                html += `<li>${book.volumeInfo.title}</li>`
             }
-        )
+            html += "</ol>";
+            $('#search-results').html(html).show();
+        })
     })
 });
