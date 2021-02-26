@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/search/:term', (req, res) => {
+    console.log(req.params);
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=10`)
     .then(googleResponse => {
             res.json(googleResponse.data);

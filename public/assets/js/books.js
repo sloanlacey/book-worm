@@ -26,7 +26,8 @@ $(function() {
         .then(json => {
             let html = "<ol>";
             for (let book of json.items) {
-                html += `<li>${book.volumeInfo.title}</li>`
+                const title = `${book.volumeInfo.title}`;
+                html += `<li>${title}</li>`
             }
             html += "</ol>";
             $('#search-results').html(html).show();
