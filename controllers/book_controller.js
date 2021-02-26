@@ -1,6 +1,9 @@
 // Require express and models
 const express = require('express');
+const axios = require('axios');
 const book = require('../models/book.js');
+const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
+
 // Create router function
 const router = express.Router();
 // Home route
@@ -11,6 +14,22 @@ router.get('/', (req, res) => {
         };
         res.render('index', hbsObject);
     })
+});
+
+router.get('/search/:term', (req, res) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=10`)
+    .then(googleResponse => {
+            res.json(googleResponse.data);
+    }) 
+    .catch(console.error);
+});
+
+router.get('/book/:id', (req, res) => {
+    axios.get(`https://www.googleapis.com/books/v1/volumes/${req.params.id}?key=${googleKey}`)
+    .then(googleResponse => {
+            res.json(googleResponse.data);
+    }) 
+    .catch(console.error);
 });
 
 router.post('/api/books', (req, res) => {
