@@ -22,11 +22,12 @@ $(function() {
   $('.newBookForm').on('submit', function(event) {
     event.preventDefault();
     const term = $('#newBookName').val();
-    fetch(`/search/${term}`)
+    fetch(`/api/search/${term}`)
       .then(res => res.json())
-      .then(json => {
+      .then(booksData => {
+        console.log(booksData);
         let html = '<ol>';
-        for (let book of json.items) {
+        for (let book of booksData.items) {
           html += `<li>${book.volumeInfo.title}</li>`;
         }
         html += '</ol>';

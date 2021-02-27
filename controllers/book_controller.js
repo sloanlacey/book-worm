@@ -1,22 +1,22 @@
 // Require express and models
 const express = require('express');
 const axios = require('axios');
-const book = require('../models/book.js');
+const db = require('../models');
 const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
 
 // Create router function
 const router = express.Router();
 // Home route
-router.get('/', (req, res) => {
-  book.selectAll(function(data) {
+
+router.get('/', async (req, res) => {
+    const data = await db.Book.findAll()
     const hbsObject = {
       books: data
     };
     res.render('index', hbsObject);
-  });
 });
 
-router.get('/search/:term', (req, res) => {
+router.get('/api/search/:term', (req, res) => {
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=10`)
     .then(googleResponse => {
       res.json(googleResponse.data);
@@ -24,7 +24,7 @@ router.get('/search/:term', (req, res) => {
     .catch(console.error);
 });
 
-router.get('/book/:id', (req, res) => {
+router.get('/api/book/:id', (req, res) => {
   axios.get(`https://www.googleapis.com/books/v1/volumes/${req.params.id}?key=${googleKey}`)
     .then(googleResponse => {
       res.json(googleResponse.data);
@@ -32,10 +32,9 @@ router.get('/book/:id', (req, res) => {
     .catch(console.error);
 });
 
-router.post('/api/books', (req, res) => {
-  book.insertOne(['book_name', 'have_read'], [req.body.book_name, req.body.have_read], (result) => {
-    res.json({ id: result.insertId });
-  });
+router.post('/api/books', async (req, res) => {
+  const newBook = await db.Book.create(req.body);
+  res.json(newBook);
 });
 // Route for individual burgers by their id
 router.put('/api/books/:id', (req, res) => {
