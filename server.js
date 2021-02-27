@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/book_controller.js');
+const db = require('./models');
 
 const PORT = process.env.PORT || 8080;
 
@@ -16,6 +17,6 @@ app.set('view engine', 'handlebars');
 
 app.use(routes);
 
-app.listen(PORT, function() {
-  console.log(`App now listening at localhost: ${PORT}`);
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
 });
