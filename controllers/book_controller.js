@@ -57,7 +57,7 @@ router.put('/api/books/:id', (req, res) => {
 
 // open library
 //author
-router.get('/a/:author', (req, res) => {
+router.get('/api/author/:author', (req, res) => {
 
   axios.get(`http://openlibrary.org/search.json?author=${req.params.author}`)
     .then(openLib => {
@@ -67,7 +67,7 @@ router.get('/a/:author', (req, res) => {
 });
 
 //title
-router.get('/a/:title', (req, res) => {
+router.get('/api/title/:title', (req, res) => {
 
   axios.get(`http://openlibrary.org/search.json?title=${req.params.title}`)
     .then(openLib => {
@@ -77,12 +77,43 @@ router.get('/a/:title', (req, res) => {
 });
 
 //subject
-router.get('/a/:subject', (req, res) => {
+router.get('/api/subject/:subject', (req, res) => {
   axios.get(`https://openlibrary.org/subjects/${req.params.subject}`)
     .then(openLib => {
       res.json(openLib.data);
     })
     .catch(console.error);
+});
+
+//data
+const chartType = '?cht=p3';
+const chartData = '&chd=t:30,20,10,40';
+// chartData = `&chd=t:${value},${value2},${value3}
+const chartSize ='&chs=700x190';
+const chartTxt = '&chl=Hi|From|data|api';
+//chartTxt =`&chl=${word}|${word2}|${word3}
+const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
+const chartURL = 'https://image-charts.com/chart' + chartType + chartData + chartSize + chartTxt + chartColor
+
+const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+
+const chartHtml = `
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Page</title>
+</head>
+<body>
+  <img src="${chartEx}" />
+  <br>
+</body>
+</html>`
+
+router.get('/api/chart', async (req, res) => {
+  let data = chartEx
+  res.append(chartHtml);
+  console.log(data)
 });
 
 module.exports = router;
