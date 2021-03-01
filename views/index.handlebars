@@ -38,22 +38,25 @@
             <img src="/assets/images/new-book.jpg" alt="An open book">
         </div>
         <div class="col-md-8">
-        <div class="card-body">
+        <form class="card-body" id="open-library">
             <h5 class="card-title">Looking for something new to read?</h5>
             <p class="card-text">Browse the shelves of our library to discover something new among thousands of titles.</p>
-            <button type="button" class="status-btn btn">Browse</button>
-        </div>
+             <input type='text' class='form-control' id='readBook' style="text-align: center;" placeholder="Search for title">
+            <button type="button" id= "OpenAPI" class="status-btn btn">Browse Books</button>
+            <div id="search-results-2"></div>
+        </form>
         </div>
         </div> 
         </div>
     </div>
+    
 {{!-- Spacing column --}}
 <div class="col-1"></div>
 {{!-- Finished books --}}
     <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
         <h1 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px;">Reading Tracker</span></h1><br>
         <h3><span style="background-color: #91D9BF; padding: 10px;">How much are you reading?</span></h3>
-        <button type="button" class="tracker-btn btn" style="margin-top: 20px;">Browse</button>
+        <progress value="0" max="100" style="height: 50px"></progress>
     </div>
 {{!-- End row 3 --}}
 </div>
