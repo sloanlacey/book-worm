@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/api/search/:term', (req, res) => {
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=10`)
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=20`)
     .then(googleResponse => {
       res.json(googleResponse.data);
     })
@@ -57,7 +57,7 @@ router.put('/api/books/:id', (req, res) => {
 
 // open library
 //author
-router.get('/a/:author', (req, res) => {
+router.get('/api/author/:author', (req, res) => {
 
   axios.get(`http://openlibrary.org/search.json?author=${req.params.author}`)
     .then(openLib => {
@@ -67,7 +67,7 @@ router.get('/a/:author', (req, res) => {
 });
 
 //title
-router.get('/a/:title', (req, res) => {
+router.get('/api/title/:title', (req, res) => {
 
   axios.get(`http://openlibrary.org/search.json?title=${req.params.title}`)
     .then(openLib => {
@@ -77,7 +77,7 @@ router.get('/a/:title', (req, res) => {
 });
 
 //subject
-router.get('/a/:subject', (req, res) => {
+router.get('/api/subject/:subject', (req, res) => {
   axios.get(`https://openlibrary.org/subjects/${req.params.subject}`)
     .then(openLib => {
       res.json(openLib.data);
