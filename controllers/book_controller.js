@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/api/search/:term', (req, res) => {
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=10`)
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=20`)
     .then(googleResponse => {
       res.json(googleResponse.data);
     })
@@ -99,14 +99,14 @@ const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700
 
 const chartHtml = `
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <img src="${chartEx}" />
-  <br>
+  <p> hello </p>
 </body>
 </html>`
 
