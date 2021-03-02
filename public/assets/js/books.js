@@ -23,6 +23,7 @@ $(function() {
   $('.newBookForm').on('submit', function(event) {
     event.preventDefault();
     const term = $('#newBookName').val();
+    console.log(term);
     fetch(`/api/search/${term}`)
       .then(res => res.json())
       .then(booksData => {
