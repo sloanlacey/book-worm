@@ -1,5 +1,6 @@
 const axios = require('axios');
 const db = require('../models');
+const jsdom = require("jsdom");
 const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
 
 module.exports = (app) => {
@@ -78,6 +79,31 @@ module.exports = (app) => {
       axios.get(`https://openlibrary.org/subjects/${req.params.subject}`)
         .then(openLib => {
           res.json(openLib.data);
+        })
+        .catch(console.error);
+    });
+
+    //data
+    /*const chartType = '?cht=p3';
+    const chartData = '&chd=t:30,20,10,40';
+    // chartData = `&chd=t:${value},${value2},${value3}
+    const chartSize ='&chs=700x190';
+    const chartTxt = '&chl=Hi|From|data|api';
+    //chartTxt =`&chl=${word}|${word2}|${word3}
+    const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
+    const chartURL = 'https://image-charts.com/chart' + chartType + chartData + chartSize + chartTxt + chartColor
+
+    //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+
+    const chart = $('<img>');
+    chart.attr("src", chartURL);
+    const chartHtml = $("#reading-tracker").appendChild(chart);*/
+
+
+    app.get('/api/chart', (req, res) => {
+      axios.get(`https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190`)
+        .then(chartData => {
+          res.json(chartData.data);
         })
         .catch(console.error);
     });

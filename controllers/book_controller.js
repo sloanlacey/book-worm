@@ -1,21 +1,21 @@
 // // Require express and models
-// // const express = require('express');
-// const axios = require('axios');
-// const db = require('../models');
-// const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
+const express = require('express');
+const axios = require('axios');
+const db = require('../models');
+const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
 
 // // Create router function
-// // const router = express.Router();
-// const apiRoutes = (req, res) => {
+const router = express.Router();
+ const apiRoutes = (req, res) => {
 // // Home route
 
-// app.get('/', async (req, res) => {
-//     const data = await db.Book.findAll()
-//     const hbsObject = {
-//       books: data
-//     };
-//     res.render('members', hbsObject);
-// });
+app.get('/', async (req, res) => {
+    const data = await db.Book.findAll()
+    const hbsObject = {
+      books: data
+     };
+    res.render('members', hbsObject);
+});
 
 // app.get('/members/api/search/:term', (req, res) => {
 //   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=20`)
@@ -86,8 +86,29 @@
 //     .catch(console.error);
 // });
 
-// };
+//data
+const chartType = '?cht=p3';
+const chartData = '&chd=t:30,20,10,40';
+// chartData = `&chd=t:${value},${value2},${value3}
+const chartSize ='&chs=700x190';
+const chartTxt = '&chl=Hi|From|data|api';
+//chartTxt =`&chl=${word}|${word2}|${word3}
+const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
+const chartURL = 'https://image-charts.com/chart' + chartType + chartData + chartSize + chartTxt + chartColor
 
-// module.exports = {
-//   apiRoutes
-// }
+//const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+
+const chart = document.createElement("img");
+chart.setAttribute("src", chartURL);
+const chartHtml = document.getElementById("reading-tracker").appendChild(chart);
+
+
+
+
+router.get('members/api/chart', async (req, res) => {
+  let data = chartURL
+  res.send(chartHtml);
+  console.log(data)
+});
+
+module.exports = router;
