@@ -117,12 +117,12 @@
           <h5 class="modal-title">RANDOM BOOK</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="random-body">
           <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" id ="random-save" class="btn btn-primary">Save to Bookshelf</button>
         </div>
       </div>
     </div>
@@ -140,7 +140,13 @@
     <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
         <h1 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px;">Reading Tracker</span></h1><br>
         <h3><span style="background-color: #91D9BF; padding: 10px;">How much are you reading?</span></h3>
-        <button type="button" class="tracker-btn btn" style="margin-top: 20px;">Browse</button>
+        <input type="text" class="inputtext" placeholder="Pages You Have Read Today" id="value">
+        <input type="text" class="inputtext" placeholder="Pages Left to Read" id="value2">
+        <!-- <input type="text" class="inputtext" placeholder="Pages You Will Read Tomorrow" id="value3"> -->
+        <!-- <input type="text" class="inputtext" placeholder="word" id="word">
+        <input type="text" class="inputtext" placeholder="word" id="word2">
+        <input type="text" class="inputtext" placeholder="word" id="word3"> -->
+        <button type="button" class="tracker-btn btn" id="tracker-btn" style="margin-top: 20px;">Calculate!</button>
     </div>
 <!-- {{!-- End row 3 --}} -->
 </div>
