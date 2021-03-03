@@ -114,8 +114,7 @@ $(function () {
 
   });
   function addToBookshelf() {
-    let isbn = $(this).attr("data-isbn");
-    console.log(isbn);
+    console.log("we clicked on the button!");
   }
 
   $('#tracker-btn').on('click', function(event){
@@ -130,9 +129,9 @@ $(function () {
     const chartPercent = `&chd=t:${value},${value2},${value3}`
     const chartSize ='&chs=700x190';
     //const chartTxt = '&chl=Hi|From|data|api';
-    const word = $('#word').val();
-    const word2 = $('#word2').val();
-    const word3 = $('#word3').val();
+    const word = $('#word').text();
+    const word2 = $('#word2').text();
+    const word3 = $('#word3').text();
     chartTxt =`&chl=${word}|${word2}|${word3}`
     const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
     const chartURL = `https://image-charts.com/chart${chartType}${chartPercent}${chartSize}${chartTxt}${chartColor}`
