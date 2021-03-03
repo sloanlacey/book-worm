@@ -1,5 +1,6 @@
 const axios = require('axios');
 const db = require('../models');
+const jsdom = require("jsdom");
 const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
 
 module.exports = (app) => {
