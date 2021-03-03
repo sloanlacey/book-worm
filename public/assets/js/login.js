@@ -10,7 +10,6 @@ $(document).ready(function() {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
-    console.log(userData);
 
     if (!userData.email || !userData.password) {
       return;
