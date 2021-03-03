@@ -1,21 +1,21 @@
 // // Require express and models
-// // const express = require('express');
-// const axios = require('axios');
-// const db = require('../models');
-// const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
+const express = require('express');
+const axios = require('axios');
+const db = require('../models');
+const googleKey = 'AIzaSyDT1yyStTIyISfsmZ0T0AnShc606GKUPAk';
 
 // // Create router function
-// // const router = express.Router();
-// const apiRoutes = (req, res) => {
+const router = express.Router();
+ const apiRoutes = (req, res) => {
 // // Home route
 
-// app.get('/', async (req, res) => {
-//     const data = await db.Book.findAll()
-//     const hbsObject = {
-//       books: data
-//     };
-//     res.render('members', hbsObject);
-// });
+app.get('/', async (req, res) => {
+    const data = await db.Book.findAll()
+    const hbsObject = {
+      books: data
+     };
+    res.render('members', hbsObject);
+});
 
 // app.get('/members/api/search/:term', (req, res) => {
 //   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=20`)
@@ -96,25 +96,18 @@ const chartTxt = '&chl=Hi|From|data|api';
 const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
 const chartURL = 'https://image-charts.com/chart' + chartType + chartData + chartSize + chartTxt + chartColor
 
-const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+//const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
 
-const chartHtml = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p> hello </p>
-  <img src="${chartURL}" >
-</body>
-</html>`
+const chart = document.createElement("img");
+chart.setAttribute("src", chartURL);
+const chartHtml = document.getElementById("reading-tracker").appendChild(chart);
 
-router.get('/api/chart', async (req, res) => {
-  let data = chartEx
-  res.append(chartHtml);
+
+
+
+router.get('members/api/chart', async (req, res) => {
+  let data = chartURL
+  res.send(chartHtml);
   console.log(data)
 });
 

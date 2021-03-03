@@ -81,4 +81,27 @@ module.exports = (app) => {
         })
         .catch(console.error);
     });
+
+    //data
+    const chartType = '?cht=p3';
+    const chartData = '&chd=t:30,20,10,40';
+    // chartData = `&chd=t:${value},${value2},${value3}
+    const chartSize ='&chs=700x190';
+    const chartTxt = '&chl=Hi|From|data|api';
+    //chartTxt =`&chl=${word}|${word2}|${word3}
+    const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
+    const chartURL = 'https://image-charts.com/chart' + chartType + chartData + chartSize + chartTxt + chartColor
+
+    //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+
+    const chart = document.createElement("img");
+    chart.setAttribute("src", chartURL);
+    const chartHtml = document.getElementById("reading-tracker").appendChild(chart);
+
+
+    app.get('members/api/chart', async (req, res) => {
+      let data = chartURL
+      res.send(chartHtml);
+      console.log(data)
+    });
 };
