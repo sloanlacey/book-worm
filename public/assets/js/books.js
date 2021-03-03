@@ -60,25 +60,42 @@ $(function() {
   }
 });
 
-$('.openLibraryForm').on('submit', function(event) {
+function randomString(){
+  let generatedRandom = "";
+  var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+  const max = 4;
+  const min = 2;
+  const len = Math.random() * (max-min+1) + min;
+  for (let i=0; i<len; i++) {
+    const index = Math.floor(Math.random()*lowercaseArray.length);
+    const letter = lowercaseArray[index];
+    generatedRandom += letter;
+  }
+  return generatedRandom;
+}
+
+$('#random-button').on('click', function(event) {
   event.preventDefault();
-  const term = $('#readBook').val();
-  fetch(`/api/title/${term}`)
+  const term = randomString();
+  fetch(`/api/search/${term}`)
     .then(res => res.json())
     .then(booksData => {
       console.log(booksData);
-      let html = '<ol>';
-      for (let book of booksData.docs) {
-        if(!book.docs.title || !book.docs.author_name || !book.docs.subject || !book.docs.has_fulltext) {
-          continue;
-        }
-        html += `<p>Title: ${book.docs.title} <br> Author: ${book.docs.author_name} <br> Subject: ${book.docs.subject}</p>`;
-        html += `<button data-readbook='${book.docs.has_fulltext}'>Read Now!</button></li>`;
+      if(!booksData.totalItems) {
+        return $("#random-button").click();
       }
-      html += '</ol>';
-      $('#search-results-2').html(html).show();
-      // eslint-disable-next-line no-use-before-define
-      $('[data-readbook]').on('click', readBook);
+      // let html = '<ol>';
+      // for (let book of booksData.docs) {
+      //   if(!book.docs.title || !book.docs.author_name || !book.docs.subject || !book.docs.has_fulltext) {
+      //     continue;
+      //   }
+      //   html += `<p>Title: ${book.docs.title} <br> Author: ${book.docs.author_name} <br> Subject: ${book.docs.subject}</p>`;
+      //   html += `<button data-readbook='${book.docs.has_fulltext}'>Read Now!</button></li>`;
+      // }
+      // html += '</ol>';
+      // $('#search-results-2').html(html).show();
+      // // eslint-disable-next-line no-use-before-define
+      // $('[data-readbook]').on('click', readBook);
     });
 });
 
