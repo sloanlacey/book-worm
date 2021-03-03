@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "bees_make_honey",
+    "password": "ALEX00100alex!!",
     "database": "books_db", 
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "bees_make_honey",
+    "password": "ALEX00100alex!!",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "bees_make_honey",
-    "database": "database_production",
+    "password": "ALEX00100alex!!",
+    "database": "books_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
