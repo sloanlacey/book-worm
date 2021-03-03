@@ -79,11 +79,20 @@
                                     </div>
                                 </div>
                 </form>
-                        <div id="search-results"></div>
-                        <div class="ol_readapi_book" isbn="039471752X" lccn="75009828"><div></div>
+                        <!-- <div id="search-results"></div>
+                        <div class="ol_readapi_book" isbn="039471752X" lccn="75009828"><div></div> -->
         </div>
     <!-- {{!-- end row 2 --}} -->
     </div>
+
+<!-- TEST ROW FOR LIST RENDER -->
+<div class="row" style="text-align: center; justify-content: center;">
+    <div class="col">
+        <div id="search-results"></div>
+        <div class="ol_readapi_book" isbn="039471752X" lccn="75009828"><div>
+    </div>
+</div>
+<!-- END TEST ROW -->
 
 <!-- {{!-- Start row 3 --}} -->
 <div class="row" style="margin-bottom: 25px;">
@@ -97,8 +106,29 @@
         <div class="card-body">
             <h5 class="card-title">Looking for something new to read?</h5>
             <p class="card-text">Find a random book to read among thousands of titles.</p>
-            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#shelvesModal" class="status-btn btn">Get Random Book</button>
+            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#randomModal" class="status-btn btn">Get Random Book</button>
             <div id="random-book"></div>
+
+<!-- TESTING MODAL FOR RANDOM BOOK GENERATOR -->
+<div class="modal" id="randomModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">RANDOM BOOK</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- END RANDOM BOOK TEST MODAL -->
+
         </div>
         </div>
         </div> 
@@ -108,7 +138,6 @@
 <div class="col-1"></div>
 <!-- {{!-- Finished books --}} -->
     <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
-      <!-- {{!-- <img src ="https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190"--}} -->
         <h1 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px;">Reading Tracker</span></h1><br>
         <h3><span style="background-color: #91D9BF; padding: 10px;">How much are you reading?</span></h3>
         <input type="text" class="inputtext" placeholder="Pages You Have Read Today" id="value">

@@ -39,8 +39,8 @@ $(function () {
           if (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
           }
-          html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button data-bookid='${book.id}'>More Info</button>`;
+          html += `<p><span class="list-spans">Title: ${book.volumeInfo.title}</span> <br> <span class="list-spans">Author: ${book.volumeInfo.authors}</span> <br> <span class="list-spans">Description: ${description}</p></span>`;
+          html += `<button data-bookclass='${book.id}'>More Info</button>`;
           html += `<button data-isbn="${book.id}">Add to Bookshelf</button>`;
           html += '</li>';
         }
@@ -48,6 +48,7 @@ $(function () {
         $('#search-results').html(html).show();
         // eslint-disable-next-line no-use-before-define
         $('[data-bookid]').on('click', getBookId);
+        // eslint-disable-next-line no-use-before-define
         $('#search-results [data-isbn]').on('click', addToBookshelf);
       });
   });
@@ -64,8 +65,8 @@ $(function () {
 
 
   function randomString() {
-    let generatedRandom = "";
-    var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    let generatedRandom = '';
+    var lowercaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const max = 4;
     const min = 2;
     const len = Math.random() * (max - min + 1) + min;
@@ -85,7 +86,7 @@ $(function () {
       .then(booksData => {
         console.log(booksData);
         if (!booksData.totalItems) {
-          return $("#random-button").click();
+          return $('#random-button').click();
         }
         let html = '';
         for (let book of booksData.items) {
@@ -99,14 +100,15 @@ $(function () {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
           }
           html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button data-isbn="${book.id}">Add to Bookshelf</button>`
+          html += `<button data-isbn='${book.id}'>Add to Bookshelf</button>`;
           break;
         }
         if (!html) {
-          return $("#random-button").click();
+          return $('#random-button').click();
         }
         html = `${html}`;
-        $("#shelvesModal .modal-body").html(html);
+        $('#shelvesModal .modal-body').html(html);
+        // eslint-disable-next-line no-use-before-define
         $('#shelvesModal [data-isbn]').on('click', addToBookshelf);
         // $('#random-book').html(html).show();
         // eslint-disable-next-line no-use-before-define
