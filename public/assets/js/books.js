@@ -39,8 +39,8 @@ $(function () {
           if (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
           }
-          html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button data-bookid='${book.id}'>More Info</button>`;
+          html += `<p><span class="list-spans">Title: ${book.volumeInfo.title}</span> <br> <span class="list-spans">Author: ${book.volumeInfo.authors}</span> <br> <span class="list-spans">Description: ${description}</p></span>`;
+          html += `<button data-bookclass='${book.id}'>More Info</button>`;
           html += `<button data-isbn="${book.id}">Add to Bookshelf</button>`;
           html += '</li>';
         }
@@ -48,6 +48,7 @@ $(function () {
         $('#search-results').html(html).show();
         // eslint-disable-next-line no-use-before-define
         $('[data-bookid]').on('click', getBookId);
+        // eslint-disable-next-line no-use-before-define
         $('#search-results [data-isbn]').on('click', addToBookshelf);
       });
   });
@@ -64,8 +65,8 @@ $(function () {
 
 
   function randomString() {
-    let generatedRandom = "";
-    var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    let generatedRandom = '';
+    var lowercaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const max = 4;
     const min = 2;
     const len = Math.random() * (max - min + 1) + min;
@@ -85,7 +86,7 @@ $(function () {
       .then(booksData => {
         console.log(booksData);
         if (!booksData.totalItems) {
-          return $("#random-button").click();
+          return $('#random-button').click();
         }
         let html = '';
         for (let book of booksData.items) {
@@ -99,14 +100,15 @@ $(function () {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
           }
           html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button data-isbn="${book.id}">Add to Bookshelf</button>`
+          html += `<button data-isbn='${book.id}'>Add to Bookshelf</button>`;
           break;
         }
         if (!html) {
-          return $("#random-button").click();
+          return $('#random-button').click();
         }
         html = `${html}`;
-        $("#shelvesModal .modal-body").html(html);
+        $('#shelvesModal .modal-body').html(html);
+        // eslint-disable-next-line no-use-before-define
         $('#shelvesModal [data-isbn]').on('click', addToBookshelf);
         // $('#random-book').html(html).show();
         // eslint-disable-next-line no-use-before-define
@@ -114,35 +116,9 @@ $(function () {
 
   });
   function addToBookshelf() {
-    let isbn = $(this).attr("data-isbn");
+    let isbn = $(this).attr('data-isbn');
     console.log(isbn);
   }
-
-  $('#tracker-btn').on('click', function(event){
-    event.preventDefault()
-    fetch('/api/chart').then(chartData =>{
-      console.log(chartData)
-    const chartType = '?cht=p3';
-    //const chartPercent = '&chd=t:30,20,10,40';
-    const value = $('#value').val();
-    const value2 = $('#value2').val();
-    const value3 = $('#value3').val();
-    const chartPercent = `&chd=t:${value},${value2},${value3}`
-    const chartSize ='&chs=700x190';
-    //const chartTxt = '&chl=Hi|From|data|api';
-    const word = $('#word').val();
-    const word2 = $('#word2').val();
-    const word3 = $('#word3').val();
-    chartTxt =`&chl=${word}|${word2}|${word3}`
-    const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
-    const chartURL = `https://image-charts.com/chart${chartType}${chartPercent}${chartSize}${chartTxt}${chartColor}`
-    //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
-
-    const chart = $('<img>');
-    chart.attr("src", chartURL);
-    $("#reading-tracker").append(chart);
-    })
-  });
 });
 
 
