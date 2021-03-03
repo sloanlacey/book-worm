@@ -123,11 +123,17 @@ $(function () {
     fetch('/api/chart').then(chartData =>{
       console.log(chartData)
     const chartType = '?cht=p3';
-    const chartPercent = '&chd=t:30,20,10,40';
-    // chartData = `&chd=t:${value},${value2},${value3}
+    //const chartPercent = '&chd=t:30,20,10,40';
+    const value = $('#value').val();
+    const value2 = $('#value2').val();
+    const value3 = $('#value3').val();
+    const chartPercent = `&chd=t:${value},${value2},${value3}`
     const chartSize ='&chs=700x190';
-    const chartTxt = '&chl=Hi|From|data|api';
-    //chartTxt =`&chl=${word}|${word2}|${word3}
+    //const chartTxt = '&chl=Hi|From|data|api';
+    const word = $('#word').val();
+    const word2 = $('#word2').val();
+    const word3 = $('#word3').val();
+    chartTxt =`&chl=${word}|${word2}|${word3}`
     const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
     const chartURL = `https://image-charts.com/chart${chartType}${chartPercent}${chartSize}${chartTxt}${chartColor}`
     //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
