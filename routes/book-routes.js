@@ -84,7 +84,7 @@ module.exports = (app) => {
     });
 
     //data
-    const chartType = '?cht=p3';
+    /*const chartType = '?cht=p3';
     const chartData = '&chd=t:30,20,10,40';
     // chartData = `&chd=t:${value},${value2},${value3}
     const chartSize ='&chs=700x190';
@@ -95,14 +95,16 @@ module.exports = (app) => {
 
     //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
 
-    const chart = document.createElement("img");
-    chart.setAttribute("src", chartURL);
-    const chartHtml = document.getElementById("reading-tracker").appendChild(chart);
+    const chart = $('<img>');
+    chart.attr("src", chartURL);
+    const chartHtml = $("#reading-tracker").appendChild(chart);*/
 
 
-    app.get('members/api/chart', async (req, res) => {
-      let data = chartURL
-      res.send(chartHtml);
-      console.log(data)
+    app.get('/api/chart', (req, res) => {
+      axios.get(`https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190`)
+        .then(chartData => {
+          res.json(chartData.data);
+        })
+        .catch(console.error);
     });
 };
