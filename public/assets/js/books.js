@@ -43,7 +43,7 @@ $(function () {
       .then(res => res.json())
       .then(booksData => {
         console.log(booksData);
-        let html = '<ol>';
+        let html = '<div class="row" style="justify-content: center; text-align: center;"> <div class="col-sm-6 col-md-6 col-lg-6" style="background-color: #f5f5f5; border-radius: 25px; margin-bottom: 25px; opacity: .95;"> <ol>';
         for (let book of booksData.items) {
           if (!book.volumeInfo.title || !book.volumeInfo.authors || !book.volumeInfo.description) {
             continue;
@@ -52,14 +52,14 @@ $(function () {
           const description = descriptionArray[0] + (descriptionArray.length > 1 ? ' ...' : '.');
           html += '<li>';
           if (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) {
-            html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
+            html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}' style="padding: 10px;">`;
           }
-          html += `<p><span class="list-spans">Title: ${book.volumeInfo.title}</span> <br> <span class="list-spans">Author: ${book.volumeInfo.authors}</span> <br> <span class="list-spans">Description: ${description}</p></span>`;
-          html += `<button data-bookclass='${book.id}'>More Info</button>`;
-          html += `<button data-isbn="${book.id}">Add to Bookshelf</button>`;
+          html += `<p><span class="list-spans"><strong>Title:</strong> ${book.volumeInfo.title}</span> <br> <span class="list-spans"><strong>Author:</strong> ${book.volumeInfo.authors}</span> <br> <span class="list-spans"><strong>Description:</strong> ${description}</p></span>`;
+          html += `<button data-bookclass='${book.id}' class="bookshelf-btn btn" style="margin-right: 5px;">More Info</button>`;
+          html += `<button data-isbn="${book.id}" class="bookshelf-btn btn" style="margin-left: 5px;">Add to Bookshelf</button>`;
           html += '</li>';
         }
-        html += '</ol>';
+        html += '</ol> </div> </div>';
         $('#search-results').html(html).show();
         // eslint-disable-next-line no-use-before-define
         $('[data-bookclass]').on('click', getBookId);
