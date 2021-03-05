@@ -112,6 +112,12 @@ h2 {
   border: .5px solid #679c88;
 }
 
+.bookshelf-btn {
+  background-color: #91D9BF;
+  color: #222222;
+  border: .5px solid #679c88;
+}
+
 .check-btn {
   background-color: #34b233;
   color: #f5f5f5;
