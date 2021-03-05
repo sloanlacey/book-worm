@@ -1,4 +1,16 @@
 $(function () {
+  async function addToBookshelf(){
+    try {
+      console.log("We hit add to bookshelf");
+      const id = $(this).attr('data-isbn');
+      await fetch(`/api/bookshelf/${id}`, {
+        method: 'POST'
+      })
+    } catch(err){
+      console.log(err);
+      alert("Something went wrong! Book not saved");
+    }
+  }
   $('#reading-tracker progress').val(Math.random() * 100); //finished books/total books
   $('.change-status').on('click', function () {
     const id = $(this).data('id');
@@ -19,6 +31,8 @@ $(function () {
       }
     );
   });
+
+
 
   $('.newBookForm').on('submit', function (event) {
     event.preventDefault();
@@ -100,7 +114,7 @@ $(function () {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
           }
           html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button data-isbn='${book.id}'>Add to Bookshelf</button>`;
+          html += `<button class='add-to-bookshelf' data-isbn='${book.id}'>Add to Bookshelf</button>`;
           break;
         }
         if (!html) {
@@ -108,16 +122,15 @@ $(function () {
         }
         html = `${html}`;
         $('.random-body').html(html);
+        $('.add-to-bookshelf').on('click', addToBookshelf);
         // eslint-disable-next-line no-use-before-define
         $('#random-save').on('click', addToBookshelf);
         // $('#random-book').html(html).show();
         // eslint-disable-next-line no-use-before-define
+      
       });
-
   });
-  function addToBookshelf() {
-    console.log("we clicked on the button!");
-  }
+
 
   $('#tracker-btn').on('click', function(event){
     event.preventDefault()
@@ -145,5 +158,6 @@ $(function () {
     })
   });
 });
+
 
 
