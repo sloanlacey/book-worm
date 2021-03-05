@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="/assets/css/book.css"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Worm</title>
+    <title>&#128027; Book Worm</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -27,44 +27,26 @@
 
 <body>
 
-  <!-- <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <h5>Logged in as: <span class="member-name"></span></h5>
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
-      </div>
-    </div>
-  </nav> -->
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <h5>Logged in as: <span class="member-name"></span></h5>
-        </div>
-      </div>
-    </div> -->
-
   <!-- {{!-- start main container --}} -->
-<div class="container-md">
+<div class="container">
 <!-- {{!-- Title/header --}} -->
 <div class="row">
-        <div id="header" class="col-lg-12 colmd-12 col-sm-12">B O O K - W O R M
-          <h5>Logged in as: <span class="member-name"></span></h5>
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a>
+        <div id="header" class="col-lg-12 colmd-12 col-sm-12">B O O K - W O R M &#128027;
+          <h5 style="font-weight: bold; background-color: #91D9BF; border: #679c88; border-radius: 10px;">Logged in as: <span class="member-name" style="color: #333333;"></span></h5>        
+          <!-- clock -->
+          <iframe src="http://free.timeanddate.com/clock/i7pdvhlk/n137/fn15/fc333/tc91d9bf/ftb/tt0/tw1/tm1/tb4" frameborder="0" width="117" height="34" style="float: left;"></iframe>
+        <!-- Logout -->
+        <a id='logout' class="navbar-brand" href="/logout">Logout</a>
+    
+
+
         </div>
-        <!-- <h5>Logged in as: <span class="member-name"></span></h5>
-        <a class="navbar-brand" href="/logout">
-          Logout
-        </a> -->
 </div>
-<!-- {{!-- Search area -- google api? --}} -->
-<!-- {{!-- Start row 2 --}} -->
+
+<!-- {{!-- Start row 2 - Search area for Google API--}} -->
     <div class="row">
         <div id="search-books" class="col-lg-12 colmd-12 col-sm-12" style="margin-bottom: 25px;">
-            <h4 id="search-text">Add a new book to read:</h4>
+            <h3 id="search-text">Add a new book to your reading list:</h3>
 
                 <form class='newBookForm'>
                     <div class='form-group row mx-auto' style='justify-content: center; text-align: center;'>
@@ -79,55 +61,53 @@
                                     </div>
                                 </div>
                 </form>
-                        <!-- <div id="search-results"></div>
-                        <div class="ol_readapi_book" isbn="039471752X" lccn="75009828"><div></div> -->
         </div>
     <!-- {{!-- end row 2 --}} -->
     </div>
 
-<!-- TEST ROW FOR LIST RENDER -->
+<!-- Google API search list -->
 <div class="row" style="text-align: center; justify-content: center;">
     <div class="col">
         <div id="search-results"></div>
         <div class="ol_readapi_book" isbn="039471752X" lccn="75009828"><div>
     </div>
 </div>
-<!-- END TEST ROW -->
+<!-- End Google API search list -->
 
 <!-- {{!-- Start row 3 --}} -->
 <div class="row" style="margin-bottom: 25px;">
-    <div id="shelves-card" class="col-lg-6 col-md-6 col-sm-8">
-        <div class="card mb-3">
+    <div id="shelves-card" class="col-lg-5 col-md-5 col-sm-8">
+        <div class="card mb-3" style="border-radius: 10px; border: 1px solid #91D9BF;">
         <div class="row g-0">
         <div class="col-md-4">
-            <img src="./assets/images/new-book.jpg" alt="An open book">
+            <img src="./assets/images/random-book.jpg" alt="A stack of books" style="border-radius: 10px;">
         </div>
         <div class="col-md-8">
         <div class="card-body">
-            <h5 class="card-title">Looking for something new to read?</h5>
-            <p class="card-text">Find a random book to read among thousands of titles.</p>
-            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#randomModal" class="status-btn btn">Get Random Book</button>
+            <h4 class="card-title" style="font-weight: bold;">Looking for something new to read?</h4>
+            <p class="card-text">Try a randomized book selection!</p>
+            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#randomModal" class="status-btn btn">Random Book</button>
             <div id="random-book"></div>
 
-<!-- TESTING MODAL FOR RANDOM BOOK GENERATOR -->
+<!-- Random Book Modal -->
 <div class="modal" id="randomModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">RANDOM BOOK</h5>
+          <h5 class="modal-title">Random Book:</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="random-body">
-          <p>Modal body text goes here.</p>
+          <p></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" id ="random-save" class="btn btn-primary">Save to Bookshelf</button>
+          <button type="button" class="status-btn btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" id ="random-save" class="btn btn-primary">Save to Bookshelf</button> -->
         </div>
       </div>
     </div>
   </div>
-<!-- END RANDOM BOOK TEST MODAL -->
+<!-- End Random Book Modal -->
 
         </div>
         </div>
@@ -135,19 +115,40 @@
         </div>
     </div>
 <!-- {{!-- Spacing column --}} -->
-<div class="col-1"></div>
+<div class="col-lg-2 col-md-2 col-sm-0"></div>
 <!-- {{!-- Finished books --}} -->
     <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
-        <h1 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px;">Reading Tracker</span></h1><br>
-        <h3><span style="background-color: #91D9BF; padding: 10px;">How much are you reading?</span></h3>
-        <input type="text" class="inputtext" placeholder="Pages You Have Read Today" id="value">
-        <input type="text" class="inputtext" placeholder="Pages Left to Read" id="value2">
+        <h2 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px; border-radius: 10px;">Reading Tracker</span></h2><br>
+        <h4><span style="background-color: #91D9BF; padding: 10px; border-radius: 10px;">How much are you reading?</span></h4>
+        <input type="text" class="inputtext" placeholder="Pages read today" id="value" style="margin-top: 10px; text-align: center;">
+        <input type="text" class="inputtext" placeholder="Pages left to read" id="value2" style="margin-top: 10px; text-align: center;">
         <!-- <input type="text" class="inputtext" placeholder="Pages You Will Read Tomorrow" id="value3"> -->
         <!-- <input type="text" class="inputtext" placeholder="word" id="word">
         <input type="text" class="inputtext" placeholder="word" id="word2">
         <input type="text" class="inputtext" placeholder="word" id="word3"> -->
-        <button type="button" class="tracker-btn btn" id="tracker-btn" style="margin-top: 20px;">Calculate!</button>
+        <button type="button" class="tracker-btn btn" id="tracker-btn" data-bs-toggle="modal" data-bs-target="#trackerModal" style="margin-top: 20px;">Calculate!</button>
     </div>
+
+<!-- Reading Tracker Graph Modal -->
+<div class="modal" id="trackerModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Reading tracker:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="random-body">
+          <img id='#reading-tracker-modal'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="status-btn btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" id ="random-save" class="btn btn-primary">Save to Bookshelf</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End reading tracker graph modal -->
+
 <!-- {{!-- End row 3 --}} -->
 </div>
 
@@ -156,11 +157,11 @@
 <div class="row">
     <div id="shelves-card" class="col-lg-5 col-md-5 col-sm-8">
         <!-- {{!-- bookshelves --}} -->
-        <div class="card">
-            <img src="./assets/images/bookshelves.jpg" class="card-img-top" alt="Image of bookshelves" title="Bookshelves">
+        <div class="card" style="border-radius: 10px; border: 1px solid #91D9BF;">
+            <img src="./assets/images/bookshelves.jpg" style="border-radius: 10px;" class="card-img-top" alt="Image of bookshelves" title="Bookshelves">
             <div class="card-body">
-            <h5 class="card-title">Bookshelves</h5>
-            <p class="card-text">View your personalized bookshelves</p>
+            <h4 class="card-title" style="font-weight: bold;">Reading List</h4>
+            <p class="card-text">View your personalized reading list</p>
 <!-- {{!-- Bookshelves modal --}} -->
 <!-- trigger modal -->
 <button type="button" class="status-btn btn" data-bs-toggle="modal" data-bs-target="#shelvesModal">View</button>
@@ -189,10 +190,10 @@
 <div class="col-lg-2 col-md-2 col-sm-0"></div>
 <!-- {{!-- Finished books --}} -->
     <div id="finished-books" class="col-lg-5 col-md-5 col-sm-8">
-            <div class="card">
-                <img src="./assets/images/the-end.jpg" class="card-img-top" alt="The last page of a book" title="The End">
+            <div class="card" style="border-radius: 10px; border: 1px solid #91D9BF;">
+                <img src="./assets/images/the-end.jpg" style="border-radius: 10px;" class="card-img-top" alt="The last page of a book" title="The End">
                 <div class="card-body">
-                <h5 class="card-title">Finished Books</h5>
+                <h4 class="card-title" style="font-weight: bold;">Finished Books</h4>
                 <p class="card-text">View all finished books</p>
 <!-- {{!-- finished books modal --}} -->
 <!-- trigger finished books modal -->
@@ -227,10 +228,10 @@
 
 <!-- {{!-- End main container --}} -->
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="./assets/js/members.js"></script>
   <script type="text/javascript" src="./assets/js/books.js"></script>
