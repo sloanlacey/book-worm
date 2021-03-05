@@ -43,7 +43,7 @@ module.exports = (app) => {
 
 
   app.get('/api/search/:term', (req, res) => {
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=20`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.params.term}&key=${googleKey}&maxResults=1`)
       .then(googleResponse => {
         res.json(googleResponse.data);
       })
