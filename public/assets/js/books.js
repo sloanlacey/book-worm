@@ -136,25 +136,26 @@ $(function () {
     event.preventDefault()
     fetch('/api/chart').then(chartData =>{
       console.log(chartData)
-    const chartType = '?cht=p3';
-    //const chartPercent = '&chd=t:30,20,10,40';
+
     const value = $('#value').val();
     const value2 = $('#value2').val();
-    const value3 = $('#value3').val();
-    const chartPercent = `&chd=t:${value},${value2}`
+
+    //const value3 = $('#value3').val();
+    
+    const chartPercent = `&chd=a%3A${value}%7C${value2}`;
     const chartSize ='&chs=700x190';
     //const chartTxt = '&chl=Hi|From|data|api';
-    const word = $('#word').text();
-    const word2 = $('#word2').text();
-    const word3 = $('#word3').text();
-    chartTxt =`&chl=${word}|${word2}|${word3}`
-    const chartColor = '&chco=EA469E|03A9F4|FFC00C|FF2027';
-    const chartURL = `https://image-charts.com/chart${chartType}${chartPercent}${chartSize}${chartTxt}${chartColor}`
-    //const chartEx = 'https://image-charts.com/chart?cht=p3&chd=t:30,20,10,40&chs=700x190'
+    //const word = $('#word').text();
+    //const word2 = $('#word2').text();
+    //const word3 = $('#word3').text();
+    //chartTxt =`&chl=${word}|${word2}|${word3}`
+    const chartColor = '&chco=CFB948,E3E3E3';
+    const chartURL = `https://image-charts.com/chart?${chartPercent}${chartSize}${chartColor}&cht=bhs`
+    //const chartEx = 'https://image-charts.com/chart?chd=a%3A50%7C100&chs=700x80&cht=bhs'
 
-    const chart = $('<img>');
+    const chart = $("<img id ='reading-tracker-modal'>");
     chart.attr("src", chartURL);
-    $("#reading-tracker").append(chart);
+    $(".reading-tracker-div").append(chart);
     })
   });
 });
