@@ -11,7 +11,8 @@ $(function () {
       alert("Something went wrong! Book not saved");
     }
   }
-  $('#reading-tracker progress').val(Math.random() * 100); //finished books/total books
+
+  $('#reading-tracker progress').val(Math.random() * 100); 
   $('.change-status').on('click', function () {
     const id = $(this).data('id');
 
@@ -61,9 +62,10 @@ $(function () {
         html += '</ol>';
         $('#search-results').html(html).show();
         // eslint-disable-next-line no-use-before-define
-        $('[data-bookid]').on('click', getBookId);
+        $('[data-bookclass]').on('click', getBookId);
         // eslint-disable-next-line no-use-before-define
-        $('#search-results [data-isbn]').on('click', addToBookshelf);
+        $('[data-isbn]').on('click', addToBookshelf);
+        $("#bookshelf-body").append(html);
       });
   });
 
@@ -124,11 +126,12 @@ $(function () {
         $('.random-body').html(html);
         $('.add-to-bookshelf').on('click', addToBookshelf);
         // eslint-disable-next-line no-use-before-define
-        $('#random-save').on('click', addToBookshelf);
+        // $('#random-save').on('click', addToBookshelf);
+        $("#bookshelf-body").append(html);
         // $('#random-book').html(html).show();
-        // eslint-disable-next-line no-use-before-define
-      
+        // eslint-disable-next-line no-use-before-define      
       });
+     
   });
 
 
