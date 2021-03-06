@@ -75,6 +75,7 @@
 <!-- End Google API search list -->
 
 <!-- {{!-- Start row 3 --}} -->
+<!-- Random book selector -->
 <div class="row" style="margin-bottom: 25px;">
     <div id="shelves-card" class="col-lg-5 col-md-5 col-sm-8">
         <div class="card mb-3" style="border-radius: 10px; border: 1px solid #91D9BF;">
@@ -84,9 +85,9 @@
         </div>
         <div class="col-md-8">
         <div class="card-body">
-            <h4 class="card-title" style="font-weight: bold;">Looking for something new to read?</h4>
-            <p class="card-text">Try a randomized book selection!</p>
-            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#randomModal" class="status-btn btn">Random Book</button>
+            <h5 class="card-title" style="font-weight: bold; margin-left: 50px; margin-top: 50px;">Want a new book?</h5>
+            <p class="card-text" style="margin-left: 50px;">Try something random!</p>
+            <button type="button" id="random-button" data-bs-toggle="modal" data-bs-target="#randomModal" class="status-btn btn" style="margin-left: 50px;">Random Book</button>
             <div id="random-book"></div>
 
 <!-- Random Book Modal -->
@@ -94,7 +95,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Random Book:</h5>
+          <h5 class="modal-title" style="font-weight: bold;">Your random book selection:</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="random-body">
@@ -120,12 +121,8 @@
     <div id="reading-tracker" class="col-lg-5 col-md-5 col-sm-8">
         <h2 style="padding: 10px; font-weight: bold;"><span style="background-color: #91D9BF; padding: 10px; border-radius: 10px;">Reading Tracker</span></h2><br>
         <h4><span style="background-color: #91D9BF; padding: 10px; border-radius: 10px;">How much are you reading?</span></h4>
-        <input type="text" class="inputtext" placeholder="What page are you on?" id="value" style="margin-top: 10px; text-align: center;">
-        <input type="text" class="inputtext" placeholder="How many pages are in your book?" id="value2" style="margin-top: 10px; text-align: center;">
-        <!-- <input type="text" class="inputtext" placeholder="Pages You Will Read Tomorrow" id="value3"> -->
-        <!-- <input type="text" class="inputtext" placeholder="word" id="word">
-        <input type="text" class="inputtext" placeholder="word" id="word2">
-        <input type="text" class="inputtext" placeholder="word" id="word3"> -->
+        <input type="text" class="inputtext" placeholder="Current page" id="value" style="margin-top: 10px; text-align: center;">
+        <input type="text" class="inputtext" placeholder="Total pages" id="value2" style="margin-top: 10px; text-align: center;">
         <button type="button" class="tracker-btn btn" id="tracker-btn" data-bs-toggle="modal" data-bs-target="#trackerModal" style="margin-top: 20px;">Calculate!</button>
     </div>
 
@@ -138,11 +135,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="reading-tracker-div">
-         <!-- <img id='reading-tracker-modal'>-->
+            <!-- Reading tracker image appends here -->
         </div>
         <div class="modal-footer">
           <button type="button" class="status-btn btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <!-- <button type="button" id ="random-save" class="btn btn-primary">Save to Bookshelf</button> -->
         </div>
       </div>
     </div>
