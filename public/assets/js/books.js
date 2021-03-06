@@ -1,16 +1,4 @@
 $(function () {
-  async function addToBookshelf(){
-    try {
-      console.log("We hit add to bookshelf");
-      const id = $(this).attr('data-isbn');
-      await fetch(`/api/bookshelf/${id}`, {
-        method: 'POST'
-      })
-    } catch(err){
-      console.log(err);
-      alert("Something went wrong! Book not saved");
-    }
-  }
 
   $('#reading-tracker progress').val(Math.random() * 100); 
   $('.change-status').on('click', function () {
@@ -35,14 +23,22 @@ $(function () {
 
 
 
-  $('.newBookForm').on('submit', function (event) {
+  $('.newBookForm').on('submit', async function (event) {
     event.preventDefault();
     const term = $('#newBookName').val();
     console.log(term);
     fetch(`/api/search/${term}`)
       .then(res => res.json())
-      .then(booksData => {
+      .then(async booksData => {
         console.log(booksData);
+        const bookId = booksData.items[0].id;
+        console.log("book id is: ", bookId)
+        await fetch(`/api/bookshelf/${bookId}`, {
+          method: 'POST'
+        }).catch((err) => {
+          console.log(err);
+          alert("Something went wrong! Book not saved");
+        })
         let html = '<div class="row" style="justify-content: center; text-align: center;"> <div class="col-sm-6 col-md-6 col-lg-6" style="background-color: #f5f5f5; border-radius: 25px; margin-bottom: 25px; opacity: .95;"> <ol>';
         for (let book of booksData.items) {
           if (!book.volumeInfo.title || !book.volumeInfo.authors || !book.volumeInfo.description) {
@@ -63,7 +59,7 @@ $(function () {
         // eslint-disable-next-line no-use-before-define
         $('[data-bookclass]').on('click', getBookId);
         // eslint-disable-next-line no-use-before-define
-        $('[data-isbn]').on('click', addToBookshelf);
+        //$('[data-isbn]').on('click', addToBookshelf);
         $("#bookshelf-body").append(html);
       });
   });
@@ -123,7 +119,7 @@ $(function () {
         }
         html = `${html}`;
         $('.random-body').html(html);
-        $('.add-to-bookshelf').on('click', addToBookshelf);
+        //$('.add-to-bookshelf').on('click', addToBookshelf);
         // eslint-disable-next-line no-use-before-define
         // $('#random-save').on('click', addToBookshelf);
         $("#bookshelf-body").append(html);

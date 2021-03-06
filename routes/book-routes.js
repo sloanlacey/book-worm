@@ -13,14 +13,16 @@ module.exports = (app) => {
   });
 
   app.post("/api/bookshelf/:book_id", async (req, res) => {
-    const id = req.user.id;
-    console.log("add a new book to", id);
-    const user = await db.User.findOne({id});
-    const newBookshelf = user.bookshelf + req.params.book_id + ",";
+    const user = await db.User.findOne({id: req.user.id});
+    console.log('newBook : ', user.bookshelf);
+    const oldBookshelf = user.bookshelf == null ? '': user.bookshelf
+    const newBookshelf =oldBookshelf + req.params.book_id + ",";
+    console.log('new book shelf is: ', newBookshelf);
     await db.User.update({
+      ...user,
       bookshelf: newBookshelf
     }, {
-      where: {id:id}
+      where: {id:req.user.id}
     });
     res.status('204');
     res.end()
