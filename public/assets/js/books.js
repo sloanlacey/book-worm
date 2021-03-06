@@ -55,8 +55,7 @@ $(function () {
             html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}' style="padding: 10px;">`;
           }
           html += `<p><span class="list-spans"><strong>Title:</strong> ${book.volumeInfo.title}</span> <br> <span class="list-spans"><strong>Author:</strong> ${book.volumeInfo.authors}</span> <br> <span class="list-spans"><strong>Description:</strong> ${description}</p></span>`;
-          html += `<button data-bookclass='${book.id}' class="bookshelf-btn btn" style="margin-right: 5px;">More Info</button>`;
-          html += `<button data-isbn="${book.id}" class="bookshelf-btn btn" style="margin-left: 5px;">Add to Bookshelf</button>`;
+          html += `<button data-isbn="${book.id}" class="bookshelf-btn btn" style="margin-left: 5px;">Move to Finished Books</button>`;
           html += '</li>';
         }
         html += '</ol> </div> </div>';
@@ -113,10 +112,10 @@ $(function () {
           const description = descriptionArray[0] + (descriptionArray.length > 1 ? ' ...' : '.');
           html += '';
           if (book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail) {
-            html += `<img src='${book.volumeInfo.imageLinks.smallThumbnail}'>`;
+            html += `<div class="row" style="justify-content: center; text-align: center;"> <div class="col-sm-6" style="background-color: #f5f5f5; border-radius: 25px; margin-top: 25px; margin-bottom: 25px;"><img src='${book.volumeInfo.imageLinks.smallThumbnail}' style="margin-top: 25px; margin-bottom: 25px;">`;
           }
-          html += `<p>Title: ${book.volumeInfo.title} <br> Author: ${book.volumeInfo.authors} <br> Description: ${description}</p>`;
-          html += `<button class='add-to-bookshelf' data-isbn='${book.id}'>Add to Bookshelf</button>`;
+          html += `<p><strong>Title:</strong> ${book.volumeInfo.title} <br> <strong>Author:</strong> ${book.volumeInfo.authors} <br> <strong>Description:</strong> ${description}</p>`;
+          html += `<button class='add-to-finished bookshelf-btn btn' data-isbn='${book.id}' style="margin-bottom: 25px;">Move to Finished Books</button></div> </div>`;
           break;
         }
         if (!html) {
@@ -156,7 +155,7 @@ $(function () {
     const chartURL = `https://image-charts.com/chart?${chartPercent}${chartSize}${chartColor}&cht=bhs`
     //const chartEx = 'https://image-charts.com/chart?chd=a%3A50%7C100&chs=700x80&cht=bhs'
 
-    const chart = $("<img id ='reading-tracker-modal'>");
+    const chart = $("<img id ='reading-tracker-modal' style='height: 250px; width: 450px;'>");
     chart.attr("src", chartURL);
     $(".reading-tracker-div").append(chart);
     })
