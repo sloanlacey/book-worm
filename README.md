@@ -22,19 +22,19 @@ This application is deployed [here](#) on heroku.
 
 ## Login or Sign Up
 
-![login](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
+![login](https://github.com/sloanlacey/book-worm/blob/main/public/assets/images/signup.png)
 
 ## Home
 
-![home](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
+![home](https://github.com/sloanlacey/book-worm/blob/main/public/assets/images/home.png)
 
 ## Book Search
 
-![search](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
+![search](https://github.com/sloanlacey/book-worm/blob/main/public/assets/images/search.png)
 
 ## Modals
 
-![modals](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
+![modals](https://github.com/sloanlacey/book-worm/blob/main/public/assets/images/trackmodal.png)
 
 ## Usage Instructions
 
