@@ -146,9 +146,9 @@ $(function () {
     //const word = $('#word').text();
     //const word2 = $('#word2').text();
     //const word3 = $('#word3').text();
-    //chartTxt =`&chl=${word}|${word2}|${word3}`
+    const chartTxt =`&chtt=Current|Book|Progress`
     const chartColor = '&chco=CFB948,E3E3E3';
-    const chartURL = `https://image-charts.com/chart?${chartPercent}${chartSize}${chartColor}&cht=bhs`
+    const chartURL = `https://image-charts.com/chart?${chartPercent}${chartSize}${chartColor}${chartTxt}&cht=bhs`
     //const chartEx = 'https://image-charts.com/chart?chd=a%3A50%7C100&chs=700x80&cht=bhs'
 
     const chart = $("<img id ='reading-tracker-modal' style='height: 250px; width: 450px;'>");
