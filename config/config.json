@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "bees_make_honey",
+    "password": "Desi7401",
     "database": "books_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "bees_make_honey",
+    "password": "",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
