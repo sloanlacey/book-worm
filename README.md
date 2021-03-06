@@ -7,11 +7,14 @@ This reading dashboard application allows users to create a reading list, compil
 ## Table of contents
 
 - [General Info](#general-info)
-- [Burger Page](#burger-page)
+- [Login or Sign Up](#login-or-sign-up)
+- [Home](#home)
+- [Book Search](#book-search)
+- [Modals](#modals)
 - [Usage Instructions](#usage-instructions)
 - [Technologies](#technologies)
 - [Summary](#summary)
-- [Author](#author)
+- [Authors](#authors)
 
 ## General Info
 
@@ -24,6 +27,10 @@ This application is deployed [here](#) on heroku.
 ## Home
 
 ![home](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
+
+## Book Search
+
+![search](https://github.com/sloanlacey/express-handlebars-burger-logger/blob/main/public/assets/images/burger-page.png)
 
 ## Modals
 
@@ -57,7 +64,7 @@ This project was created with:
 
 - This application is designed to be a personalized reading dashboard for users and is available for download.
 
-## Author
+## Authors
 
 - [Sloan Lacey](https://github.com/sloanlacey/book-worm)
 - [Michael Alexander](https://github.com/ALEX00100alex)
@@ -65,4 +72,4 @@ This project was created with:
 
 ## Questions?
 
-If you have questions about this application, please send an email to sloanlacey89@gmail.com, and I will get back to you as soon as possible.
+If you have questions about this application, please send an email to sloanlacey89@gmail.com, and we will get back to you as soon as possible.
